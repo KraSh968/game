@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Запись</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<main>
+    <div class="container mt-5">
+        <h1>ADMIN</h1>
+        <div><a class="btn btn-primary mt-4" href="/addPrice">Добавить тариф</a></div>
+        <div><a class="btn btn-primary mt-4" href="/changePrice">Редактировать тариф</a></div>
+        <div><a class="btn btn-primary mt-4" href="/deletedPrice">Удалить тариф</a></div>
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <th scope="col">Сеанс</th>
+                <th scope="col">День недели</th>
+                <th scope="col">Часы</th>
+                <th scope="col">Зал</th>
+                <th scope="col">Цена</th>
+            </tr>
+            <tr th:each="el : ${prices}">
+                <td>
+                    <div>
+                        <p th:text="${el.rate}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.day}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.hour}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.hall}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.price}+Р"/>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!--        -->
+        <div><a class="btn btn-primary mt-4" href="/addIron">Добавить храктеристики</a></div>
+        <div><a class="btn btn-primary mt-4" href="/changeIron">Редактировать храктеристики</a></div>
+        <div><a class="btn btn-primary mt-4" href="/deletedIron">Удалить храктеристики</a></div>
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <th scope="col">Комната</th>
+                <th scope="col">Процессор</th>
+                <th scope="col">Видиокарта</th>
+                <th scope="col">Монитор</th>
+                <th scope="col">Игровое кресло</th>
+                <th scope="col">Гарнитура</th>
+                <th scope="col">Клавиатура</th>
+            </tr>
+            <tr th:each="el : ${irons}">
+                <th scope="row">STANDARD</th>
+                <td>
+                    <div>
+                        <p th:text="${el.CPU}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.video_card}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.monitor}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.gaming_chair}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.headset}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.keyboard}"/>
+                    </div>
+                </td>
+            </tr>
+            <tr th:each="el : ${ironsVip}">
+                <th scope="row">VIP</th>
+                <td>
+                    <div>
+                        <p th:text="${el.CPU}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.video_card}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.monitor}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.gaming_chair}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.headset}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.keyboard}"/>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+<!--        -->
+        <div><a class="btn btn-primary mt-4" href="/editUser">Редактировать пользователя</a></div>
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <th scope="col">Имя</th>
+                <th scope="col">Роль</th>
+            </tr>
+            <tr th:each="el : ${users}">
+                <td>
+                    <div>
+                        <p th:text="${el.username}"/>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <p th:text="${el.roles.name}"/>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>

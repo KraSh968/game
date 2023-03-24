@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text = "${title}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<main>
+    <section class="py-5 text-center container">
+        <form th:action="@{/addIron}" method="post">
+            <div>
+                <label> Комната:
+                    <select type="text" name="hall">
+                        <div th:each="el : ${halls}">
+                            <option th:value="${el.name}" th:text="${el.name}"/>
+                        </div>
+                    </select>
+                </label>
+            </div>
+            <div><label> Процессор: <input class="form-control" type="text" name="CPU"/> </label></div>
+            <div><label> Видиокарта: <input class="form-control" type="text" name="video_card"/> </label></div>
+            <div><label> Монитор: <input class="form-control" type="text" name="monitor"/> </label></div>
+            <div><label> Игровое кресло: <input class="form-control" type="text" name="gaming_chair"/> </label></div>
+            <div><label> Гарнитура: <input class="form-control" type="text" name="headset"/> </label></div>
+            <div><label> Клавиатура: <input class="form-control" type="text" name="keyboard"/> </label></div>
+            <div><input class="btn btn-primary mt-4" type="submit" value="Добавить характеристики"/></div>
+        </form>
+    </section>
+</main>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>

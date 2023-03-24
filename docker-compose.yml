@@ -1,0 +1,26 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    hostname: mysql
+    volumes:
+      - ./mysql-data/sql:/var/lib/mysql
+    environment:
+      - .env
+
+  maven-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sample-maven-app
+    hostname: maven-app
+    ports:
+      - "8080:8080"
+    tty: true
+    depends_on:
+      - mysql
+
+#volumes:
+#  mysql-data:
+#    driver: local
